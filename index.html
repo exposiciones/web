@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exposiciones</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('https://previews.123rf.com/images/vkulieva/vkulieva1602/vkulieva160200007/52452427-patr%C3%B3n-sin-fisuras-para-lista-de-tareas-fondo-universales.jpg');
+            background-color: #000000c4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin-top: 50px;
+            font-size: 3rem;
+            color: #FFD700; /* Dorado */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.4);
+            font-family: 'Georgia', serif;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+        .button-container {
+            margin-top: 30px;
+        }
+        .btn {
+            position: relative;
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 16px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        #btn-1 {
+            color: rgba(0, 0, 0, 0.781); /* Letras oscuras */
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230417/pngtree-background-texture-ancient-stone-brick-wall-in-light-yellow-sand-color-photo-image_41323350.jpg'); /* Textura de piedra */
+            background-size: cover;
+            background-position: center;
+            text-shadow: 0 2px 2px rgba(255, 255, 255, 0.3); /* Efecto tallado */
+            font-weight: bold;
+        }
+        #btn-1:hover {
+            color: rgb(255, 255, 0); /* Letras iluminadas */
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6);
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.8);
+            transform: scale(1.1);
+        }
+        #btn-2 {
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            background-image: url('https://clipart-library.com/image_gallery/65575.gif'); /* GIF de fondo */
+            background-size: cover;
+            background-position: center; /* Quieto por defecto */
+            transition: background-position 0.5s ease, transform 0.3s ease;
+        }
+        #btn-2:hover {
+            background-position: top; /* Mueve el GIF al pasar el cursor */
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #FFD700; /* Dorado */
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fall 1s linear forwards;
+        }
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Exposiciones</h1>
+    <div class="button-container">
+        <a href="Egipto.html" class="btn" id="btn-1">Inglés Egypt</a>
+        <a href="TeoriaAtomica.html" class="btn" id="btn-2">Mi Parte <br> de la <br> Teoria Atomica</a>
+    </div>
+    <script>
+        // Función para generar partículas
+        function createParticle(x, y, parent) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            parent.appendChild(particle);
+
+            // Eliminar la partícula después de la animación
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // Agregar evento de mousemove al botón "Inglés Egypt"
+        const buttonEgypt = document.querySelector('#btn-1');
+        buttonEgypt.addEventListener('mousemove', (e) => {
+            const rect = buttonEgypt.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            createParticle(x, y, buttonEgypt);
+        });
+    </script>
+</body>
+</html>

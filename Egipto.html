@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egypt</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20230417/pngtree-background-texture-ancient-stone-brick-wall-in-light-yellow-sand-color-photo-image_41323350.jpg'); /* Fondo de piedra */
+            background-size: cover;
+            background-position: center;
+            color: #FFD700; /* Dorado */
+            margin: 0;
+            padding: 0;
+            overflow: auto; /* Permitir desplazamiento */
+        }
+        .btn-back {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #FFD700;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .btn-back:hover {
+            background-color: #FFD700;
+            color: #000;
+            transform: scale(1.1);
+        }
+        h1 {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.6);
+            text-transform: uppercase;
+        }
+        .content {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+            padding: 20px;
+            border-radius: 10px;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            color: #FFD700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+            margin-top: 20px;
+        }
+        p {
+            line-height: 1.8;
+            font-size: 1.2rem;
+        }
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #FFD700; /* Dorado */
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fall 1s linear forwards;
+        }
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-back">Back to Main Page</a>
+    <h1>Welcome to Egypt</h1>
+    <div class="content">
+        <h2>Geography</h2>
+        <p>
+            Egypt is located in the northeastern corner of Africa, bordered by the Mediterranean Sea to the north and the Red Sea to the east. The country is known for its vast deserts, including the Sahara, and the fertile Nile River Valley, which is the lifeblood of the nation.
+        </p>
+        <h2>History</h2>
+        <p>
+            Egypt has a rich history that spans thousands of years. It is home to one of the world's oldest civilizations, with ancient monuments such as the Great Pyramids of Giza and the Sphinx. Over the centuries, Egypt has been influenced by various cultures, including Greek, Roman, and Islamic civilizations.
+        </p>
+        <h2>Culture</h2>
+        <p>
+            Egyptian culture is a blend of ancient traditions and modern influences. Music, dance, and art play a significant role in daily life. The country is also known for its delicious cuisine, which includes dishes like koshari, falafel, and molokhia.
+        </p>
+        <h2>Tourism</h2>
+        <p>
+            Egypt is a popular tourist destination, attracting millions of visitors each year. Key attractions include the Pyramids of Giza, the temples of Luxor and Karnak, the Valley of the Kings, and the beaches of the Red Sea. Cairo, the capital city, is a bustling metropolis with a mix of historical and modern landmarks.
+        </p>
+        <h2>Modern Egypt</h2>
+        <p>
+            Today, Egypt is a vibrant country with a growing economy and a population of over 100 million people. It is a regional leader in politics, culture, and education, and continues to play a significant role on the global stage.
+        </p>
+    </div>
+    <script>
+        // Crear un contenedor para las partículas
+        const particleContainer = document.createElement('div');
+        particleContainer.style.position = 'fixed';
+        particleContainer.style.top = '0';
+        particleContainer.style.left = '0';
+        particleContainer.style.width = '100%';
+        particleContainer.style.height = '100%';
+        particleContainer.style.pointerEvents = 'none';
+        particleContainer.style.overflow = 'hidden';
+        document.body.appendChild(particleContainer);
+    
+        // Función para generar partículas
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            particleContainer.appendChild(particle);
+    
+            // Eliminar la partícula después de la animación
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    
+        // Agregar evento de mousemove a toda la página
+        document.addEventListener('mousemove', (e) => {
+            createParticle(e.clientX, e.clientY);
+        });
+    </script>
+</body>
+</html>
